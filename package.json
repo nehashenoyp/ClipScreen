@@ -1,0 +1,32 @@
+{
+  "name": "clipper",
+  "version": "1.0.4",
+  "description": "Save history of all information you copy and use them whenever with a solitary snap",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "postinstall": "electron-builder install-app-deps",
+    "package": "electron-builder",
+    "package:win": "electron-builder -w",
+    "package:linux": "electron-builder -l",
+    "package:mac": "electron-builder -m",
+    "package:all": "electron-builder -lwm",
+    "deploy:win": "electron-builder -w --publish always",
+    "deploy:linux": "electron-builder -l --publish always",
+    "deploy:mac": "electron-builder -m --publish always"
+  },
+  "repository": "https://github.com/AkashRajpurohit/clipper",
+  "keywords": [
+    "Electron",
+    "Clipper",
+    "Copy to clipboard",
+    "Clipboard manager",
+    "Clipboard history"
+  ],
+  "author": "Akash Rajpurohit <akash009.dev@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^8.5.2",
+    "electron-builder": "^22.3.2"
+  }
+}
