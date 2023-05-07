@@ -4,7 +4,7 @@
 ### 1.serasusan
 ### 2.nehashenoyp
 # How it works?
-### * A set of text can be selected and copied.This shall be then added to the clipboard.
+* A set of text can be selected and copied.This shall be then added to the clipboard.
 * After addition of multiple texts you can choose the required one to paste.
 * The used one is deleted and arranged appropriately.
 
