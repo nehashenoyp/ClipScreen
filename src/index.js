@@ -1,9 +1,7 @@
- const electron = require('electron');
+ const {remote, clipboard, nativeImage} = require('electron');
 
 //Importing some modules
-const BrowserWindow = electron.remote.BrowserWindow;
-const clipboard = electron.clipboard;
-const nativeImage = electron.nativeImage;
+const BrowserWindow = remote.BrowserWindow;
 
 var input = document.getElementById('enter');
 var copy = document.getElementById('copy');
