@@ -10,4 +10,6 @@
 * After addition of multiple texts you can choose the required one to paste.
 * The same process can be applied for images , RTF and HTML
 * You can also change the theme of the window using the two options at the end of the page
+# Demo
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/97498540/236913213-7e640272-d268-44f2-bfa5-60b486ca8de4.png">
 
