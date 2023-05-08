@@ -10,7 +10,7 @@ var area = document.getElementById('area');
 
 clipboard.clear();
 const formats = clipboard.availableFormats();
-console.lof(formats);
+console.log(formats);
 
 copy.addEventListener('click',()=>{
     if(input.value){
@@ -40,7 +40,7 @@ copyRtf.addEventListener('click',()=>{
 
 var copyImage = document.getElementById('copyImage');
 copyImage.addEventListener('click',()=>{
-    const image = nativeImage.createFromPath('assets/image.png')
+    const image = nativeImage.createFromPath('../assets/image.png')
     clipboard.writeImage(image);
     console.log('Copied image successfully!');
 
