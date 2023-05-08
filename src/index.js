@@ -1,72 +1,76 @@
- const {remote, clipboard, nativeImage} = require('electron');
+const input = document.getElementById('enter');
+const copy = document.getElementById('copy');
+const paste = document.getElementById('paste');
+const area = document.getElementById('area');
 
-//Importing some modules
-const BrowserWindow = remote.BrowserWindow;
+console.log('Clipboard is available: ');
+// clipboard.clear();
+// const formats = window.clipboard.availableFormats();
+// console.log(formats);
 
-var input = document.getElementById('enter');
-var copy = document.getElementById('copy');
-var paste = document.getElementById('paste');
-var area = document.getElementById('area');
-
-clipboard.clear();
-const formats = clipboard.availableFormats();
-console.log(formats);
-
-copy.addEventListener('click',()=>{
-    if(input.value){
-        clipboard.writeText(input.value);
-        console.log('Copied text successfully!')
-    }
+copy.addEventListener('click', () => {
+  if (input.value) {
+    window.clipboard.writeText(input.value);
+    console.log('Copied text successfully!')
+  }
 });
 
-paste.addEventListener('click',()=>{
-    area.innerText = clipboard.readText();
-    console.log('Pasted text successfully!')
+paste.addEventListener('click', () => {
+  area.innerText = window.clipboard.readText();
+  console.log('Pasted text successfully!')
 });
 
-var copyHtml = document.getElementById('copyHtml');
-copyHtml.addEventListener('click',()=>{
-    clipboard.writeHTML('<b>Hello everyone</b>');
+const copyHtml = document.getElementById('copyHtml');
+copyHtml.addEventListener('click', () => {
+  window.clipboard.writeHTML('<b>Hello everyone</b>');
 
-    console.log(clipboard.readHTML());
+  console.log(window.clipboard.readHTML());
 });
 
-var copyRtf = document.getElementById('copyRtf');
-copyRtf.addEventListener('click',()=>{
-    clipboard.writeRTF('{\\rtf1\\ansi{\\fonttb1\\f0\\fswiss Helvetica;\\f0\\pard\nThis is some {\\bbold} text.\\par\n}')
+const copyRtf = document.getElementById('copyRtf');
+copyRtf.addEventListener('click', () => {
+  window.clipboard.writeRTF('{\\rtf1\\ansi{\\fonttb1\\f0\\fswiss Helvetica;\\f0\\pard\nThis is some {\\bbold} text.\\par\n}')
 
-    console.log(clipboard.readRTF());
+  console.log(window.clipboard.readRTF());
 });
 
-var copyImage = document.getElementById('copyImage');
-copyImage.addEventListener('click',()=>{
-    const image = nativeImage.createFromPath('../assets/image.png')
-    clipboard.writeImage(image);
-    console.log('Copied image successfully!');
+const copyImage = document.getElementById('copyImage');
+copyImage.addEventListener('click', () => {
+  const image = window.nativeImage.createFromPath('../assets/image.png')
+  window.clipboard.writeImage(image);
+  console.log('Copied image successfully!');
 
-    console.log(clipboard.readImage());
-}); 
+  console.log(window.clipboard.readImage());
+});
 
-var style = document.getElementById('style');
-let win = BrowserWindow.getFocusedWindow();
-// let win = BrowserWindow.getAllWindows()[0];
-var cssKey = undefined;
- 
-var css = "body { background-color: #000000; color: white; }"
- 
+
+// let win = window.require('electron').remote.getFocusedWindow();
+// let win = window.BrowserWindow.getFocusedWindow();
+// let win = window.require('electron').remote.BrowserWindow.getAllWindows()[0];
+
+const css = "body { background-color: #000000; color: white; }"
+
+const style = document.getElementById('style');
+let win = null;
+let cssKey = undefined;
+
 style.addEventListener('click', () => {
+  const windows = window.require('electron').remote.BrowserWindow.getAllWindows();
+  if (windows.length > 0) {
+    win = windows[0];
     win.webContents.insertCSS(css, {
-        cssOrigin: 'author'
+      cssOrigin: 'author'
     }).then(result => {
-        console.log('CSS Added Successfully')
-        console.log('Unique Key Returned ', result)
-        cssKey = result;
+      console.log('CSS Added Successfully')
+      console.log('Unique Key Returned ', result)
+      cssKey = result;
     }).catch(error => {
-        console.log(error);
+      console.log(error);
     });
+  }
 });
- 
-var clear = document.getElementById('clear');
+
+const clear = document.getElementById('clear');
 clear.addEventListener('click', () => {
     if (cssKey) {
         win.webContents.removeInsertedCSS(cssKey)
