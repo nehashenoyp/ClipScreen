@@ -1,0 +1,24 @@
+{
+  "name": "clipscreen",
+  "version": "1.0.0",
+  "description": "Clipboard API in electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "www.github.com/nehashenoyp/Hack1"
+  },
+  "keywords": [
+    "electron"
+  ],
+  "author": "Neha Shenoy P",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^24.2.0"
+  }
+}
+
+
